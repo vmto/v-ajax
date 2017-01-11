@@ -1,0 +1,12 @@
+{
+  "name": "v-ajax",
+  "version": "1.0.0",
+  "description": "To solve the callback",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["ajax","jsonp","v-ajax","vue-ajax",],
+  "author": "saturn",
+  "license": "MIT"
+}
