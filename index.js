@@ -8,10 +8,36 @@ function json2url(json){
 }
 function ajax(json){
 	json=json || {};
-	if(!json.url)return;
+	if(!json.url){
+		console.log('url Not Null');
+		return;
+	};
 	json.data=json.data || {};
 	json.type=json.type || 'get';
 
+	//jsonp
+	if(json.dataType==='jsonp'){
+		json.jsonp = json.jsonp || 'callback';
+
+		var fnName='jsonp'+Math.random();
+		fnName=fnName.replace('.','');
+
+		json.data[json.jsonp]=fnName;
+
+		var oS=document.createElement('script');
+		oS.src=json.url+'?'+json2url(json.data);
+		var oHead=document.getElementsByTagName('head')[0];
+		oHead.appendChild(oS);
+
+		global[fnName]=function(data){
+			json.success && json.success(data);
+			oHead.removeChild(oS);
+		};
+
+		return;
+	}
+
+	//ajax
 	if(global.XMLHttpRequest){
 		var oAjax=new XMLHttpRequest();
 	}else{
@@ -30,13 +56,12 @@ function ajax(json){
 		break;
 	}
 
+	// fnLoading()
 	json.fnLoading && json.fnLoading();
 
 	oAjax.onreadystatechange=function(){
 		if(oAjax.readyState==4){
-
 			json.complete && json.complete();
-
 			if(oAjax.status>=200 && oAjax.status<300 || oAjax.status==304){
 				if(json.dataType=='xml'){
 					json.success && json.success(oAjax.responseXML);
@@ -48,27 +73,6 @@ function ajax(json){
 			}
 		}
 	};
-
-	//jsonp
-	if(json.dataType==='jsonp'){
-		json.jsonp = json.jsonp || 'callback';
-
-		var fnName='jsonp'+Math.random();
-		fnName=fnName.replace('.','');
-
-		json.data[json.jsonp]=fnName;
-
-		var oS=document.createElement('script');
-		oS.src=json.url+'?'+json2url(json.data);
-		var oHead=document.getElementsByTagName('head')[0];
-		oHead.appendChild(oS);
-
-		global[fnName]=function(data){
-			json.success && json.success(data);
-
-			oHead.removeChild(oS);
-		};
-	}
 }
 
 export default{
