@@ -1,6 +1,6 @@
 {
   "name": "v-ajax",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "To solve the callback",
   "main": "index.js",
   "scripts": {
