@@ -24,7 +24,7 @@ data() {
 ```
 ```bash
 mounted() {
-  this.ajax({
+  this.$ajax({
     'type':'GET',
     'url':this.apiData.url,
     'dataType':'jsonp',
