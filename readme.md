@@ -25,15 +25,15 @@ data() {
 ```bash
 mounted() {
   this.$ajax({
-    'type':'GET',
-    'url':this.apiData.url,
-    'dataType':'jsonp',
-    'jsonp':'jsonpcallback',
-    'data':{
-      'appid' : this.apiData.appid,
-      'sign' : this.apiData.sign,
-      'type' : this.apiData.type,
-      'page' : this.apiData.curPage
+    type:'GET',
+    url:this.apiData.url,
+    dataType:'jsonp',
+    jsonp:'jsonpcallback',
+    data:{
+      appid : this.apiData.appid,
+      sign : this.apiData.sign,
+      type : this.apiData.type,
+      page : this.apiData.curPage
     },
     success:function(res){
       console.log(res);
