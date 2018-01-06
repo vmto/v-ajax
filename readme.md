@@ -1,49 +1,62 @@
 ## To solve the callback
 
-> Email：vmto@qq.com
+> https://github.com/vue-demo/vue-ajax
 
 ```bash
 import Vue from 'vue'
-import vAjax from 'v-ajax';
+import VAjax from 'v-ajax';
 
-Vue.use(vAjax);
+Vue.use(VAjax);
 ```
 
 ```bash
 data() {
   return {
-    apiData:{
+    api:{
       url:'http://api.xxx.com/v1',
-      appid:123,
-      sign:'abc',
-      type:1,
-      curPage:1
+      appid:123456,
+      sign:'13456'
     }
   }
 }
-```
-```bash
-mounted() {
+
+// Vue 1.0+
+ready() {
   this.$ajax({
     type:'GET',
-    url:this.apiData.url,
+    url:this.api.url,
     dataType:'jsonp',
     jsonp:'jsonpcallback',
     data:{
-      appid : this.apiData.appid,
-      sign : this.apiData.sign,
-      type : this.apiData.type,
-      page : this.apiData.curPage
+      appid : this.api.appid,
+      sign : this.api.sign
     },
-    success:function(res){
-      console.log(res);
-      _this.$nextTick(function () {
-        _iScroll.refresh();
-      });
+    success:function(result){
+      console.log(result);
     },
     error:function(err){
       console.log(err);
     }
   })
-};
+}
+
+// Vue 2.0+
+mounted() {
+  this.$ajax({
+    type:'GET',
+    url:this.api.url,
+    dataType:'jsonp',
+    jsonp:'jsonpcallback',
+    data:{
+      appid : this.api.appid,
+      sign : this.api.sign
+    },
+    success:function(result){
+      console.log(result);
+    },
+    error:function(err){
+      console.log(err);
+    }
+  })
+}
 ```

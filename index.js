@@ -1,1 +1,1 @@
-module.exports = require('./lib/v-ajax')
+module.exports = require('./lib/v-ajax');
