@@ -1,6 +1,4 @@
-## To solve the callback
-
-> https://github.com/vue-demo/vue-ajax
+## v-ajax plug-in with functions of ajax、jsonp
 
 ## Example
 ```bash
@@ -64,3 +62,5 @@ ready() {
 }
 ```
 
+#### Bugs URL
+> https://github.com/vue-demo/vue-ajax

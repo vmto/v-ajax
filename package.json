@@ -1,7 +1,7 @@
 {
   "name": "v-ajax",
-  "version": "1.0.4",
-  "description": "To solve the callback",
+  "version": "1.0.5",
+  "description": "To resolve the callback of the vue.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
