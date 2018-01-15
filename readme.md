@@ -1,6 +1,6 @@
-## v-ajax plug-in with functions of ajax、jsonp
+#### v-ajax plug-in with functions of ajax、jsonp
 
-## Example
+#### Example
 ```bash
 import Vue from 'vue'
 import VueAjax from 'v-ajax';
